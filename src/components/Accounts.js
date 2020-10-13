@@ -45,11 +45,23 @@ function Accounts({ accounts, addAccount }) {
             placeholder="Account value"
             value={value}
           />
-          <div onClick={saveAccountDetails}>✅</div>
-          <div onClick={() => setShowing(false)}>❌</div>
+          <div onClick={saveAccountDetails}>
+            <span role="img" aria-label="Confirm account creation">
+              ✅
+            </span>
+          </div>
+          <div onClick={() => setShowing(false)}>
+            <span role="img" aria-label="Close account creation">
+              ❌
+            </span>
+          </div>
         </form>
       ) : (
-        <div onClick={() => setShowing(true)}>➕</div>
+        <div onClick={() => setShowing(true)}>
+          <span role="img" aria-label="Add new account">
+            ➕
+          </span>
+        </div>
       )}
     </div>
   );

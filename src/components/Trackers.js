@@ -55,11 +55,21 @@ function Trackers({ stocks, addTracker }) {
             <option value="gold">gold</option> 
             <option value="stock">stock</option>
           </select>
-          <div onClick={saveTracker}>✅</div>
-          <div onClick={() => setShowing(false)}>❌</div>
+          <div onClick={saveTracker}>
+            <span role="img" aria-label="Confirm asset creation">
+              ✅
+            </span>
+          </div>
+          <div onClick={() => setShowing(false)}>
+            <span role="img" aria-label="Cancel asset creation">
+              ❌
+            </span>
+          </div>
         </form>
       ) : (
-        <div onClick={() => setShowing(true)}>➕</div>
+        <div onClick={() => setShowing(true)}>
+          <span role="img" aria-label="Add new asset"></span>➕
+        </div>
       )}
     </div>
   );
