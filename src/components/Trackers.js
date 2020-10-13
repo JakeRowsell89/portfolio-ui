@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Select from "react-select";
 
 import Tracker from "./Tracker";
 
@@ -6,7 +7,7 @@ function Trackers({ stocks, addTracker }) {
   const [showing, setShowing] = useState(false);
   const [amount, setAmount] = useState(0);
   const [name, setName] = useState("");
-  const [type, setType] = useState("");
+  const [type, setType] = useState("stock");
   const updateTracker = (e) => {
     setName(e.target.value.trim());
   };
