@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "@material-ui/core/Button";
 
 function ApiKeyInput({ updateApiKey, handleAPIKeyChange }) {
   return (
@@ -8,7 +9,9 @@ function ApiKeyInput({ updateApiKey, handleAPIKeyChange }) {
         onChange={handleAPIKeyChange}
         placeholder="Your alphavantage API key"
       />
-      <input type="submit" onClick={updateApiKey} value="sub" />
+      <Button size="small" variant="outlined" onClick={updateApiKey}>
+        Go!
+      </Button>
     </form>
   );
 }

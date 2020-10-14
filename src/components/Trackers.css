@@ -1,0 +1,10 @@
+.stocks-form > div,
+.stocks-form > button {
+  margin: 8px;
+  max-width: 18vw;
+  display: inline-flex;
+}
+
+.stocks-form > button {
+  top: 16px;
+}

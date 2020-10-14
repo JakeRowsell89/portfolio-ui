@@ -1,0 +1,10 @@
+.accounts-form > div,
+.accounts-form > button {
+  margin: 8px;
+  max-width: 18vw;
+  display: inline-flex;
+}
+
+.accounts-form > button {
+  top: 16px;
+}

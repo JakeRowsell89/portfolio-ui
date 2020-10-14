@@ -1,5 +1,9 @@
 import React, { useState } from "react";
+
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 import Account from "./Account.js";
+import "./Accounts.css";
 
 function Accounts({ accounts, addAccount }) {
   const [name, setName] = useState("");
@@ -32,29 +36,35 @@ function Accounts({ accounts, addAccount }) {
         ))}
       </section>
       {showing ? (
-        <form>
-          <input
-            type="text"
+        <form className="accounts-form">
+          <TextField
+            label="Name"
             onChange={updateName}
-            placeholder="Account name"
             value={name}
+            size="medium"
           />
-          <input
-            type="text"
+          <TextField
+            label="Balance"
             onChange={updateBalance}
-            placeholder="Account value"
             value={value}
+            size="medium"
           />
-          <div onClick={saveAccountDetails}>
-            <span role="img" aria-label="Confirm account creation">
-              ✅
-            </span>
-          </div>
-          <div onClick={() => setShowing(false)}>
-            <span role="img" aria-label="Close account creation">
-              ❌
-            </span>
-          </div>
+          <Button
+            onClick={saveAccountDetails}
+            variant="outlined"
+            color="primary"
+            size="small"
+          >
+            Save
+          </Button>
+          <Button
+            onClick={() => setShowing(false)}
+            variant="outlined"
+            color="secondary"
+            size="small"
+          >
+            Cancel
+          </Button>
         </form>
       ) : (
         <div onClick={() => setShowing(true)}>

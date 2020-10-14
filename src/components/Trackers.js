@@ -1,11 +1,16 @@
 import React, { useState } from "react";
-import Select from "react-select";
-
+import FormControl from "@material-ui/core/FormControl";
+import TextField from "@material-ui/core/TextField";
+import Select from "@material-ui/core/Select";
+import Button from "@material-ui/core/Button";
+import MenuItem from "@material-ui/core/MenuItem";
+import InputLabel from "@material-ui/core/InputLabel";
 import Tracker from "./Tracker";
+import "./Trackers.css";
 
 function Trackers({ stocks, addTracker }) {
   const [showing, setShowing] = useState(false);
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState();
   const [name, setName] = useState("");
   const [type, setType] = useState("stock");
   const updateTracker = (e) => {
@@ -23,7 +28,7 @@ function Trackers({ stocks, addTracker }) {
 
     if (name.length) {
       addTracker(name, amount, type);
-      setAmount(0);
+      setAmount(null);
       setName("");
       setType("");
       setShowing(false);
@@ -38,34 +43,50 @@ function Trackers({ stocks, addTracker }) {
         ))}
       </section>
       {showing ? (
-        <form>
-          <input
-            type="text"
+        <form className="stocks-form">
+          <TextField
             onChange={updateTracker}
-            placeholder="New Tracker listing"
+            label="Asset Symbol"
             value={name}
+            size="medium"
           />
-          <input
-            type="text"
+          <TextField
             onChange={updateAmount}
-            placeholder="Amount of shares"
+            label="Amount"
             value={amount}
+            size="medium"
           />
-          <select onChange={updateType} value={type}>
-            <option value="bond">bond</option>
-            <option value="gold">gold</option> 
-            <option value="stock">stock</option>
-          </select>
-          <div onClick={saveTracker}>
-            <span role="img" aria-label="Confirm asset creation">
-              ✅
-            </span>
-          </div>
-          <div onClick={() => setShowing(false)}>
-            <span role="img" aria-label="Cancel asset creation">
-              ❌
-            </span>
-          </div>
+          <FormControl>
+            <InputLabel id="asset-type-input" shrink={true}>
+              Type
+            </InputLabel>
+            <Select
+              onChange={updateType}
+              value={type}
+              labelId="asset-type-input"
+            >
+              <MenuItem value="bond">bond</MenuItem>
+              <MenuItem value="gold">gold</MenuItem> 
+              <MenuItem value="stock">stock</MenuItem>
+            </Select>
+          </FormControl>
+
+          <Button
+            onClick={saveTracker}
+            variant="outlined"
+            color="primary"
+            size="small"
+          >
+            Save
+          </Button>
+          <Button
+            onClick={() => setShowing(false)}
+            variant="outlined"
+            color="secondary"
+            size="small"
+          >
+            Cancel
+          </Button>
         </form>
       ) : (
         <div onClick={() => setShowing(true)}>
